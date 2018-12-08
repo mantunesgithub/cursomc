@@ -1,6 +1,6 @@
 package com.mantunes.cursomc.services.exception;
 
-import javassist.tools.rmi.ObjectNotFoundException;
+
 
 public class ObjectNotfoundException extends RuntimeException {
 
