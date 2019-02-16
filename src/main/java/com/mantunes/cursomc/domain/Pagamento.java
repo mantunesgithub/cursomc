@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.mantunes.cursomc.domain.enums.EstadoPagamento;
 //Quando é herança, voce coloca na Super Classe Pagamento o SINGLE_TABLE para ficar um tabelão tudo com  ou
 //faz uma tabela para cada um com JOINED 
@@ -23,7 +24,8 @@ public abstract class Pagamento implements Serializable {
 	private	Integer id;
 	private	Integer estado;
 	
-	//Associação com Pedido	. O pedido deve ter mesma chave que Pagamento 
+	//Associação com Pedido	. O pedido deve ter mesma chave que Pagamento
+	@JsonBackReference
 	@OneToOne
 	@JoinColumn(name="pedido_id")
 	@MapsId
