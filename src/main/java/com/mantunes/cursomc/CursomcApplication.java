@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mantunes.cursomc.domain.Categoria;
 import com.mantunes.cursomc.domain.Cidade;
 import com.mantunes.cursomc.domain.Cliente;
@@ -33,6 +34,14 @@ import com.mantunes.cursomc.repositories.ProdutoRepository;
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner {
 	
+/* 
+ * 
+ *  
+ *  Apos o termino dos mapeamentes descobriu que o @JsonManagedReference e @JsonManagedReference
+ * davam problemas no envio, então optou-se por usar somente o @JsonIgnore
+ * 
+ * 	
+ */
 	@Autowired
 	private	CategoriaRepository	categoriaRepository;	
 	
