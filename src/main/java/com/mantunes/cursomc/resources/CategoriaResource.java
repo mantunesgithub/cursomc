@@ -22,7 +22,7 @@ public class CategoriaResource {
 	
 	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id )	{
-		Categoria obj = service.buscar(id);
+		Categoria obj = service.find(id);
 		return ResponseEntity.ok().body(obj);		
 	}
 	
@@ -31,7 +31,8 @@ public class CategoriaResource {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri(); 
-		return ResponseEntity.created(uri).build();		
+		return ResponseEntity.created(uri).build();	
+	}	
 				
 /*	após inserir o metodo no banco de dados, o bd vai atribuir um novo Id
 	para esse obj. Vamos pegar o Id e fornecer como argumento da nova URI (postman)
@@ -47,8 +48,13 @@ public class CategoriaResource {
 	==>Agora falta colocar as anotações que vão ser mapeadas no metodo post
 	==> Para que esse Objeto (Categoria obj) seja construido a partir dos dados Json que eu enviar 
 	tem que inserir a anotação  => @RequestBody para converter o Jason para obj Java automaticamente
+*/
+		@RequestMapping(value="/{id}",method=RequestMethod.PUT)
+		public ResponseEntity<Void> update (@RequestBody Categoria obj, @PathVariable Integer id){
+			obj.setId(id);
+			obj = service.update(obj);
+			return ResponseEntity.noContent().build();
 	
- 
-*/ 	
-	}
+		}
 }
+
